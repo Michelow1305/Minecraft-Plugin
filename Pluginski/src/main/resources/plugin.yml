@@ -2,3 +2,7 @@ name: Pluginski
 version: '${version}'
 main: org.vaatu.pluginski.Pluginski
 api-version: '1.20'
+commands:
+  test:
+  killaids:
+  allahuakbar:

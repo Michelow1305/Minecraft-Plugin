@@ -1,5 +1,6 @@
 package org.vaatu.pluginski;
 
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
@@ -38,12 +39,14 @@ public final class Pluginski extends JavaPlugin {
         } else if (label.equalsIgnoreCase("allahuakbar")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
+                World world = p.getWorld();
                 @SuppressWarnings("unchecked")
                 Collection<Chicken> chickens = (Collection<Chicken>) p.getWorld()
                         .getEntitiesByClass(EntityType.CHICKEN.getEntityClass());
                 for (Chicken c : chickens) {
-                    c.damage(30);
-                    c.getWorld().spawnEntity(c.getLocation(), EntityType.LIGHTNING);
+                    c.setInvulnerable(false);
+                    c.damage(50);
+                    world.spawnEntity(c.getLocation(), EntityType.LIGHTNING);
                 }
             }
             return true;
